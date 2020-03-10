@@ -1,16 +1,17 @@
 <template>
-  <div class="home">
-    {{ message }}
+  <div>
+    <v-alert type="primary" :value="true" v-for="i in arras" :key="i">
+      abcd {{ i }}
+
+    </v-alert>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
 export default {
   data () {
     return {
-      message: 'abcd'
+      arras: [1, 2, 3, 4, 'www', 'xxxxx']
     }
   }
 }
