@@ -5,7 +5,11 @@ import Home from '../views/Home.vue'
 Vue.use(VueRouter)
 
 const routes = [
-
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
+  },
   {
     path: '/about',
     name: 'About',
@@ -22,9 +26,14 @@ const routes = [
       import(/* webpackChunkName: "about" */ '../views/About2.vue')
   },
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/lectures/card',
+    component: () =>
+      import('../views/lectures/card.vue')
+  },
+  {
+    path: '/lectures/layout',
+    component: () =>
+      import('../views/lectures/layout.vue')
   },
   {
     path: '/*',
