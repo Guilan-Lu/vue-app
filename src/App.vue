@@ -9,22 +9,50 @@
     <v-toolbar flat color="transparent">
       <v-toolbar-title>Account</v-toolbar-title>
     </v-toolbar>
-    <v-divider></v-divider>
+
     <v-list >
-      <v-list-item v-for="item in items" :key="item.title" :to="item.to">
+      <v-list-group
+        v-for="item in items"
+        :key="item.title"
+        v-model="item.active"
+        :prepend-icon="item.icon"
+        no-action
+      >
+
+        <template v-slot:activator>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>{{item.title}}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </template>
+        <v-list-item
+          v-for="subItem in item.subItems"
+          :key="subItem.title"
+          :to="subItem.to"
+        >
+          <v-list-item-content>
+            <v-list-item-title>{{subItem.title}}</v-list-item-title>
+          </v-list-item-content>
+
+          <v-list-item-action>
+            <v-icon>{{subItem.icon}}</v-icon>
+          </v-list-item-action>
+        </v-list-item>
+      </v-list-group>
+      <!-- <v-list-item v-for="item in items" :key="item.title" :to="item.to">
         <v-list-item-avatar>
           <v-icon>{{item.icon}}</v-icon>
         </v-list-item-avatar>
         <v-list-item-content two-line>
           <v-list-item-title>{{item.title}}</v-list-item-title>
-          <!-- <v-list-item-subtitle>bbbb</v-list-item-subtitle> -->
         </v-list-item-content>
         <v-list-item-action>
           <v-btn icon>
             <v-icon color="grey lighten-1">mdi-information</v-icon>
           </v-btn>
         </v-list-item-action>
-      </v-list-item>
+      </v-list-item> -->
     </v-list>
   </v-navigation-drawer>
   <v-toolbar
@@ -58,17 +86,32 @@ export default {
         {
           icon: 'mdi-alert',
           title: 'home',
-          to: '/'
+          active: true,
+          subItems: [
+            {
+              title: 'dashboard',
+              to: '/'
+            },
+            {
+              title: 'About2',
+              to: '/about2'
+            }
+          ]
         },
         {
           icon: 'mdi-alert-box',
-          title: 'About2',
-          to: '/about2'
-        },
-        {
-          icon: 'mdi-alert-circle',
-          title: 'About',
-          to: '/about'
+          title: 'Lectures',
+          active: false,
+          subItems: [
+            {
+              title: 'card',
+              to: '/lectures/card'
+            },
+            {
+              title: 'layout',
+              to: '/lectures/layout'
+            }
+          ]
         }
       ]
     }
