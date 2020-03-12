@@ -1,7 +1,13 @@
 import Vue from 'vue'
-import Vuetify from 'vuetify/lib'
+import Vuetify, {
+  VLayout
+} from 'vuetify/lib'
 
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  components: {
+    VLayout
+  }
+})
 
 export default new Vuetify({
 })
