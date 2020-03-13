@@ -28,6 +28,7 @@ yarn lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+<<<<<<< HEAD
 ## firebase config file
 
 **./firebaseConfig.js**
@@ -44,3 +45,22 @@ export default {
   measurementId: ""
 };
 ```
+=======
+### firebase config
+
+\*\*
+./firebaseConfig.js\*\*\*
+
+````javascript
+```export default {
+  apiKey: "...",
+  authDomain: "x.firebaseapp.com",
+  databaseURL: "https://x.firebaseio.com",
+  projectId: "x",
+  storageBucket: "",
+  messagingSenderId: "x",
+  appId: "12",
+  measurementId: "G-NHQ6YZ1KFW"
+};
+````
+>>>>>>> origin

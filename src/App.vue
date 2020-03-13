@@ -16,17 +16,21 @@
           <template v-slot:activator>
             <v-list-item>
               <v-list-item-content>
-                <v-list-item-title>{{item.title}}</v-list-item-title>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </template>
-          <v-list-item v-for="subItem in item.subItems" :key="subItem.title" :to="subItem.to">
+          <v-list-item
+            v-for="subItem in item.subItems"
+            :key="subItem.title"
+            :to="subItem.to"
+          >
             <v-list-item-content>
-              <v-list-item-title>{{subItem.title}}</v-list-item-title>
+              <v-list-item-title>{{ subItem.title }}</v-list-item-title>
             </v-list-item-content>
 
             <v-list-item-action>
-              <v-icon>{{subItem.icon}}</v-icon>
+              <v-icon>{{ subItem.icon }}</v-icon>
             </v-list-item-action>
           </v-list-item>
         </v-list-group>
@@ -45,8 +49,12 @@
         </v-list-item>-->
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar dark prominent src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
-      <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
+    <v-toolbar
+      dark
+      prominent
+      src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+    >
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Vuetify</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon>
@@ -91,13 +99,14 @@ export default {
               title: "card",
               to: "/lectures/card"
             },
-            {
-              title: "layout",
-              to: "/lectures/layout"
-            },
+
             {
               title: "notes",
               to: "/lectures/notes"
+            },
+            {
+              title: "layout",
+              to: "/lectures/layout"
             }
           ]
         }
