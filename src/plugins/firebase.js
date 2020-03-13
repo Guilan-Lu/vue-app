@@ -4,7 +4,7 @@ import firebaseConfig from "../../firebaseConfig";
 import "firebase/firestore";
 
 // Add the Firebase products that you want to use
-// import "firebase/auth";
+import "firebase/auth";
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

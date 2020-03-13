@@ -120,6 +120,8 @@ export default {
         .delete();
       await this.get();
       console.log(r);
+      this.title = "";
+      this.content = "";
     }
   }
 };
