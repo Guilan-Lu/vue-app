@@ -1,16 +1,16 @@
 <template>
   <v-container fluid>
-    <v-layout>
-      <v-flex xs5>
+    <v-row>
+      <v-col xs5>
         <v-text-field v-model="title" label="title"></v-text-field>
-      </v-flex>
-      <v-flex xs5>
+      </v-col>
+      <v-col xs5>
         <v-text-field v-model="content" label="content"></v-text-field>
-      </v-flex>
-      <v-flex xs2>
+      </v-col>
+      <v-col xs2>
         <v-btn color="success" @click="post">post</v-btn>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
     <v-data-iterator
       :items="items"
       :items-per-page.sync="itemsPerPage"
