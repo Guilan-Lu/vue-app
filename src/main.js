@@ -12,6 +12,10 @@ import store from "./store";
 
 Vue.config.productionTip = false;
 
+const global = "abcd";
+
+Vue.prototype.$global = global;
+
 new Vue({
   router,
   store,

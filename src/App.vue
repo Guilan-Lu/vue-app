@@ -20,11 +20,7 @@
               </v-list-item-content>
             </v-list-item>
           </template>
-          <v-list-item
-            v-for="subItem in item.subItems"
-            :key="subItem.title"
-            :to="subItem.to"
-          >
+          <v-list-item v-for="subItem in item.subItems" :key="subItem.title" :to="subItem.to">
             <v-list-item-content>
               <v-list-item-title>{{ subItem.title }}</v-list-item-title>
             </v-list-item-content>
@@ -52,7 +48,7 @@
     <div>
       <v-toolbar color="lime">
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-toolbar-title>Vuetify</v-toolbar-title>
+        <v-toolbar-title>{{$store.state.title}}</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn icon>
           <v-icon>mdi-dots-vertical</v-icon>

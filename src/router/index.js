@@ -46,6 +46,10 @@ const routes = [
     component: () => import("../views/lectures/mother.vue")
   },
   {
+    path: "/lectures/vuex",
+    component: () => import("../views/lectures/vuex.vue")
+  },
+  {
     path: "/lectures/layout",
     component: () => import("../views/lectures/layout.vue")
   },
