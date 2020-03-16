@@ -3,9 +3,11 @@ const cors = require("cors");
 require("express-async-errors");
 
 app.use(cors());
+
+app.use(require("../middlewares/verifyToken"));
+
 app.post("/", (req, res) => {
-  const a = 3;
-  if (a === 3) throw Error("abc");
+  console.log(JSON.stringify(req.headers));
   res.send("post ok");
 });
 
@@ -25,9 +27,6 @@ app.delete("/:id", (req, res) => {
   res.send("delete ok+" + req.params.id);
 });
 
-app.use((err, req, res, next) => {
-  if (err.message === "abc") return res.status(403).send("auth failed");
-  res.send(err.message);
-});
+app.use(require("../middlewares/error"));
 
 module.exports = app;

@@ -80,7 +80,7 @@ export default {
   methods: {
     async create() {
       // this.$axios
-      //   .post("http://localhost:5001/apple-1d0e8/us-central1/test")
+      //   .post("test")
       //   .then(r => {
       //     this.textCreate = r.data;
       //   })
