@@ -42,6 +42,10 @@ const routes = [
     component: () => import("../views/lectures/axios.vue")
   },
   {
+    path: "/lectures/mother",
+    component: () => import("../views/lectures/mother.vue")
+  },
+  {
     path: "/lectures/layout",
     component: () => import("../views/lectures/layout.vue")
   },
