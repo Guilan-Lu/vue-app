@@ -8,7 +8,11 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: () => import("../views/About.vue")
+    component: () => import("../views/Home.vue"),
+    beforeEach: (to, from, next) => {
+      console.log("bf enter");
+      next();
+    }
   },
   {
     path: "/sign",
@@ -64,5 +68,15 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+router.beforeEach((to, from, next) => {
+  console.log("bf each");
+  if (Vue.prototype.$isFirebaseAuth) next();
+});
+
+// router.afterEach((to, from, next) => {
+//   console.log("af each");
+//   next();
+// });
 
 export default router;

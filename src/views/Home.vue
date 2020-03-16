@@ -1,18 +1,13 @@
 <template>
-  <div>
-    <v-alert type="primary" :value="true" v-for="i in arras" :key="i">
-      abcd {{ i }}
-
-    </v-alert>
-  </div>
+  <div>This is main page</div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      arras: [1, 2, 3, 4, 'www', 'xxxxx']
-    }
+      arras: [1, 2, 3, 4, "www", "xxxxx"]
+    };
   }
-}
+};
 </script>

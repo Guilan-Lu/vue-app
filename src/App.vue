@@ -50,7 +50,7 @@
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title>{{$store.state.user ? $store.state.user.displayName : "no login yet"}}</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn icon>
+        <v-btn icon @click="signOut">
           <v-icon>mdi-dots-vertical</v-icon>
         </v-btn>
       </v-toolbar>
@@ -107,7 +107,10 @@ export default {
     };
   },
   methods: {
-    test() {}
+    async signOut() {
+      const r = await this.$firebase.auth().signOut();
+      console.log(r);
+    }
   }
 };
 </script>
