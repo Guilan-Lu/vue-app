@@ -51,14 +51,56 @@
     </v-navigation-drawer>
     <div>
       <v-toolbar color="indigo" dark>
-        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon
+          @click="drawer = !drawer"
+          v-if="$store.state.user"
+        ></v-app-bar-nav-icon>
         <v-toolbar-title>{{
           $store.state.user ? $store.state.user.displayName : "no login yet"
         }}</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn icon @click="signOut">
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
+        <v-toolbar-items v-if="$store.state.user">
+          <v-menu offset-y>
+            <template v-slot:activator="{ on }">
+              <v-btn color="primary" dark v-on="on" icon>
+                <v-avatar size="32" color="grey lighten-4">
+                  <img :src="$store.state.user.photoURL" alt="avatar" />
+                </v-avatar>
+              </v-btn>
+            </template>
+            <v-card width="320">
+              <v-container grid-list-md>
+                <v-layout row wrap>
+                  <v-flex xs4>
+                    <v-avatar size="96" color="grey lighten-4">
+                      <img :src="$store.state.user.photoURL" alt="avatar" />
+                    </v-avatar>
+                  </v-flex>
+                  <v-flex xs8>
+                    <v-card-text>
+                      <span class="font-weight-bold">
+                        {{ $store.state.user.displayName }}
+                      </span>
+                      <br />
+                      {{ $store.state.user.email }}
+                    </v-card-text>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+              <v-divider></v-divider>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="primary" @click="$firebase.auth().signOut()"
+                  >Logout</v-btn
+                >
+              </v-card-actions>
+            </v-card>
+          </v-menu>
+
+          <!-- <v-btn icon @click="signOut">
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn> -->
+        </v-toolbar-items>
       </v-toolbar>
     </div>
     <v-content>
@@ -128,12 +170,6 @@ export default {
       ]
     };
   },
-  methods: {
-    async signOut() {
-      // const r = await this.$firebase.auth().signOut();
-      // console.log(r);
-      this.$Progress.start();
-    }
-  }
+  methods: {}
 };
 </script>
