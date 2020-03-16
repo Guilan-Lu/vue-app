@@ -20,7 +20,11 @@
               </v-list-item-content>
             </v-list-item>
           </template>
-          <v-list-item v-for="subItem in item.subItems" :key="subItem.title" :to="subItem.to">
+          <v-list-item
+            v-for="subItem in item.subItems"
+            :key="subItem.title"
+            :to="subItem.to"
+          >
             <v-list-item-content>
               <v-list-item-title>{{ subItem.title }}</v-list-item-title>
             </v-list-item-content>
@@ -48,7 +52,9 @@
     <div>
       <v-toolbar color="indigo" dark>
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-toolbar-title>{{$store.state.user ? $store.state.user.displayName : "no login yet"}}</v-toolbar-title>
+        <v-toolbar-title>{{
+          $store.state.user ? $store.state.user.displayName : "no login yet"
+        }}</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn icon @click="signOut">
           <v-icon>mdi-dots-vertical</v-icon>
@@ -56,8 +62,24 @@
       </v-toolbar>
     </div>
     <v-content>
-      <router-view />
+      <vue-progress-bar></vue-progress-bar>
+      <v-container grid-list-md>
+        <v-row row wrap align-center justify-center>
+          <v-card color="transparent" flat v-if="!$isFirebaseAuth">
+            <v-card-text class="text-xs-center">
+              <v-progress-circular
+                indeterminate
+                color="primary"
+              ></v-progress-circular>
+            </v-card-text>
+            <v-card-text class="text-xs-center">
+              Now waiting for authrization...
+            </v-card-text>
+          </v-card>
+        </v-row>
+      </v-container>
     </v-content>
+    <router-view />
   </v-app>
 </template>
 
@@ -108,8 +130,9 @@ export default {
   },
   methods: {
     async signOut() {
-      const r = await this.$firebase.auth().signOut();
-      console.log(r);
+      // const r = await this.$firebase.auth().signOut();
+      // console.log(r);
+      this.$Progress.start();
     }
   }
 };
