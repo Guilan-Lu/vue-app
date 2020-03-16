@@ -46,10 +46,9 @@
       </v-list>
     </v-navigation-drawer>
     <div>
-      <v-toolbar color="lime">
+      <v-toolbar color="indigo" dark>
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title>{{$store.state.user ? $store.state.user.displayName : "no login yet"}}</v-toolbar-title>
-        <v-toolbar-title>{{$store.state.token}}</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn icon>
           <v-icon>mdi-dots-vertical</v-icon>
