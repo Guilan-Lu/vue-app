@@ -14,3 +14,15 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 });
 
 exports.test = functions.https.onRequest(require("./test"));
+exports.createUser = functions.auth.user().onCreate(user => {
+  let set = { level: 2 };
+  if (functions.config().admin.email === user.email && user.emailVerified)
+    return (set.level = 0);
+  admin
+    .auth()
+    .setCustomUserClaims(user.uid, set)
+    .then(() => {
+      // The new custom claims will propagate to the user's ID token the
+      // next time a new one is issued.
+    });
+});
