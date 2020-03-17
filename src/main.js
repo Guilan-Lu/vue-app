@@ -1,6 +1,5 @@
 import Vue from "vue";
 import vuetify from "./plugins/vuetify";
-import firebase from "./plugins/firebase";
 import "./plugins/vuetify";
 import "./plugins/firebase";
 import "./plugins/axios";
