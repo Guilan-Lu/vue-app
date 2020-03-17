@@ -30,5 +30,11 @@ firebase.auth().onAuthStateChanged(user => {
     router.push("/sign");
   }
   // store.commit("setUser", user);
-  store.dispatch("getUser", user);
+  store.dispatch("getUser", user).then(() => {
+    if (user) {
+      router.push("/");
+    } else {
+      router.push("/sign");
+    }
+  });
 });

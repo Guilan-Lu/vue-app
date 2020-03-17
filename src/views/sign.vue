@@ -54,6 +54,7 @@ export default {
       const provider = new this.$firebase.auth.GoogleAuthProvider();
       this.$firebase.auth().languageCode = "en";
       await this.$firebase.auth().signInWithPopup(provider);
+      await this.$firebase.auth().currentUser.getIdToken(true);
     },
     async signInEmail() {
       const r = await this.$firebase

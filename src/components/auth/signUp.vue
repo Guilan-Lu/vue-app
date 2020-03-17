@@ -109,6 +109,7 @@ export default {
       const provider = new this.$firebase.auth.GoogleAuthProvider();
       this.$firebase.auth().languageCode = "en";
       await this.$firebase.auth().signInWithPopup(provider);
+      await this.$firebase.auth().currentUser.getIdToken(true);
     },
     async createWithEmailAndPassword() {
       if (!this.$refs.form.validate())
@@ -121,6 +122,8 @@ export default {
       const result = await user.updateProfile({
         displayName: `${this.form.firstName} ${this.form.lastName}`
       });
+
+      await this.$firebase.auth().currentUser.getIdToken(true);
       console.log(result);
     }
   }

@@ -1,5 +1,8 @@
 <template>
-  <div>This is main page</div>
+  <div>
+    <p>This is main page</p>
+    {{ JSON.stringify($store.state.claims, null, 2) }}
+  </div>
 </template>
 
 <script>
